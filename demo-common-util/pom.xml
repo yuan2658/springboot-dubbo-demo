@@ -2,37 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-<groupId>com.example</groupId>
-<artifactId>demo-parent</artifactId>
-<version>1.0-SNAPSHOT</version>
+    <artifactId>demo-common-util</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-
-<packaging>pom</packaging>
-
-<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.11.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-</parent>
-
-<properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
-
-    <dubbo-starter.version>0.2.1.RELEASE</dubbo-starter.version>
-    <dubbo.version>2.6.5</dubbo.version>
-    <zkclient.version>0.10</zkclient.version>
-    <curator.version>2.12.0</curator.version>
-</properties>
-
-
-<dependencyManagement>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>demo-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -50,6 +42,12 @@
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
             <version>${zkclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -58,9 +56,6 @@
             <version>${curator.version}</version>
         </dependency>
 
-
     </dependencies>
-</dependencyManagement>
-
 
 </project>
