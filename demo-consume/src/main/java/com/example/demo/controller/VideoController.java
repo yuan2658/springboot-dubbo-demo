@@ -63,6 +63,7 @@ public class VideoController {
     public String getData(String type) throws Exception {
         String url = "https://getman.cn/api/request?url=http://mu.coroad.cn//bf2.php?lx="+ type;
         String jsonByUrl = UrlUtils.getJsonByUrl(url,"POST");
+        System.out.println(jsonByUrl);
         JSONObject jsonObject = JSONObject.parseObject(jsonByUrl);
         return  (String) jsonObject.get("body");
     }
