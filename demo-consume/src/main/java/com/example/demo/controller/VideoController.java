@@ -51,7 +51,7 @@ public class VideoController {
         VideoType[] values = VideoType.values();
         for(VideoType videoType:values){
             String data = getData(videoType.getType());
-            videoService.save(data);
+            videoService.save(data,videoType.getType());
         }
         //结束时间
         long endTime=System.currentTimeMillis();

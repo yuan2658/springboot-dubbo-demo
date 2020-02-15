@@ -10,14 +10,16 @@ import java.io.Serializable;
  */
 public class Video implements Serializable {
     private static final long serialVersionUID = -66886548814263492L;
-    
+
     private String id;
-    
+
     private String type;
-    
+
     private String url;
-    
+
     private String name;
+
+    private String tag;
 
 
     public String getId() {
@@ -52,4 +54,11 @@ public class Video implements Serializable {
         this.name = name;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 }

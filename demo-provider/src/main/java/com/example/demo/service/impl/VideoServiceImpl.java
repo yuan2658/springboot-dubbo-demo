@@ -87,7 +87,7 @@ public class VideoServiceImpl implements VideoService {
 
 
     @Override
-    public Video save(String body){
+    public Video save(String body,String tag){
         Video video = new Video();
         Matcher matcher = PATTERN_NAME.matcher(body);
         int i =0;
@@ -111,6 +111,7 @@ public class VideoServiceImpl implements VideoService {
             System.out.println(substring);
             video.setUrl(substring);
         }
+        video.setTag(tag);
         return insert(video);
     }
 

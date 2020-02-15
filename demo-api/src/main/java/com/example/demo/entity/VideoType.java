@@ -17,8 +17,9 @@ public enum VideoType {
     RH("日韩","rha"),
     DM("动漫","dm"),
     WM("无码","wm"),
-    OME("欧美","ome"),
+    OME("欧美","omei"),
     GCH("国产","gch"),
+    JP("精品","jp"),
     LLYP("三级","llyp");
 
     private String name;
