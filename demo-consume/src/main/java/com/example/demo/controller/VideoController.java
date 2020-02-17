@@ -43,8 +43,8 @@ public class VideoController {
     }
 
 
-    @GetMapping("save")
-    public String save() throws Exception {
+    @GetMapping("save1")
+    public String save1() throws Exception {
         //开始时间
         long startTime=System.currentTimeMillis();
 
@@ -59,10 +59,93 @@ public class VideoController {
         }
         //结束时间
         long endTime=System.currentTimeMillis();
-        System.out.println("执行时间为："+(endTime-startTime)/1000 +"s");
+        System.out.println("save1执行时间为："+(endTime-startTime)/1000 +"s");
         return "200";
     }
 
+    @GetMapping("save2")
+    public String save2() throws Exception {
+        //开始时间
+        long startTime=System.currentTimeMillis();
+
+        VideoType[] values = VideoType.values();
+        for(VideoType videoType:values){
+            String data = getData(videoType.getType());
+            if(!StringUtils.isBlank(data)){
+                videoService.save(data,videoType.getType());
+            }else {
+                System.out.println("无效数据========="+videoType.getName());
+            }
+        }
+        //结束时间
+        long endTime=System.currentTimeMillis();
+        System.out.println("save2执行时间为："+(endTime-startTime)/1000 +"s");
+        return "200";
+    }
+
+
+    @GetMapping("save3")
+    public String save3() throws Exception {
+        //开始时间
+        long startTime=System.currentTimeMillis();
+
+        VideoType[] values = VideoType.values();
+        for(VideoType videoType:values){
+            String data = getData(videoType.getType());
+            if(!StringUtils.isBlank(data)){
+                videoService.save(data,videoType.getType());
+            }else {
+                System.out.println("无效数据========="+videoType.getName());
+            }
+        }
+        //结束时间
+        long endTime=System.currentTimeMillis();
+        System.out.println("save3执行时间为："+(endTime-startTime)/1000 +"s");
+        return "200";
+    }
+
+
+    @GetMapping("save4")
+    public String save4() throws Exception {
+        //开始时间
+        long startTime=System.currentTimeMillis();
+
+        VideoType[] values = VideoType.values();
+        for(VideoType videoType:values){
+            String data = getData(videoType.getType());
+            if(!StringUtils.isBlank(data)){
+                videoService.save(data,videoType.getType());
+            }else {
+                System.out.println("无效数据========="+videoType.getName());
+            }
+        }
+        //结束时间
+        long endTime=System.currentTimeMillis();
+        System.out.println("save4执行时间为："+(endTime-startTime)/1000 +"s");
+        return "200";
+    }
+
+
+
+    @GetMapping("save5")
+    public String save5() throws Exception {
+        //开始时间
+        long startTime=System.currentTimeMillis();
+
+        VideoType[] values = VideoType.values();
+        for(VideoType videoType:values){
+            String data = getData(videoType.getType());
+            if(!StringUtils.isBlank(data)){
+                videoService.save(data,videoType.getType());
+            }else {
+                System.out.println("无效数据========="+videoType.getName());
+            }
+        }
+        //结束时间
+        long endTime=System.currentTimeMillis();
+        System.out.println("save5执行时间为："+(endTime-startTime)/1000 +"s");
+        return "200";
+    }
 
     public String getData(String type) throws Exception {
         String url = "https://getman.cn/api/request?url=http://mu.coroad.cn//bf2.php?lx="+ type;
