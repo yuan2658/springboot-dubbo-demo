@@ -36,7 +36,8 @@
         <curator.version>2.12.0</curator.version>
 
         <mybatis-spring-boot>1.3.0</mybatis-spring-boot>
-        <mysql-connector>5.1.39</mysql-connector>
+        <mysql-connector>5.1.40</mysql-connector>
+        <alibaba-fastjson>1.2.58</alibaba-fastjson>
     </properties>
 
 
