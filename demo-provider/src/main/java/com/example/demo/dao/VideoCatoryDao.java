@@ -1,17 +1,16 @@
 package com.example.demo.dao;
 
-import com.example.demo.entity.Video;
+import com.example.demo.entity.VideoCatory;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * (Video)表数据库访问层
+ * (VideoCatory)表数据库访问层
  *
  * @author makejava
- * @since 2020-02-15 17:33:44
+ * @since 2020-02-19 23:00:45
  */
-
-public interface VideoDao {
+public interface VideoCatoryDao {
 
     /**
      * 通过ID查询单条数据
@@ -19,42 +18,41 @@ public interface VideoDao {
      * @param id 主键
      * @return 实例对象
      */
-    Video queryById(String id);
+    VideoCatory queryById(Integer id);
 
     /**
      * 查询指定行数据
      *
-     * @param status 状态
      * @param offset 查询起始位置
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<Video> queryAllByLimit(@Param("status") String status,@Param("offset") int offset, @Param("limit") int limit);
+    List<VideoCatory> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param video 实例对象
+     * @param videoCatory 实例对象
      * @return 对象列表
      */
-    List<Video> queryAll(Video video);
+    List<VideoCatory> queryAll(VideoCatory videoCatory);
 
     /**
      * 新增数据
      *
-     * @param video 实例对象
+     * @param videoCatory 实例对象
      * @return 影响行数
      */
-    int insert(Video video);
+    int insert(VideoCatory videoCatory);
 
     /**
      * 修改数据
      *
-     * @param video 实例对象
+     * @param videoCatory 实例对象
      * @return 影响行数
      */
-    int update(Video video);
+    int update(VideoCatory videoCatory);
 
     /**
      * 通过主键删除数据
@@ -62,6 +60,6 @@ public interface VideoDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(String id);
+    int deleteById(Integer id);
 
 }

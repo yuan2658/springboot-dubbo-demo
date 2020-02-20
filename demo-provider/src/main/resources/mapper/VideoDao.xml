@@ -8,13 +8,14 @@
         <result property="url" column="url" jdbcType="VARCHAR"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="tag" column="tag" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
 
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="VideoMap">
         select
-          id, type, url, name,tag
+          id, type, url, name,tag,status
         from video.video
         where id = #{id}
     </select>
@@ -22,15 +23,16 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="VideoMap">
         select
-          id, type, url, name,tag
+          id, type, url, name,tag,status
         from video.video
+        where status= #{status}
         limit #{offset}, #{limit}
     </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="VideoMap">
         select
-          id, type, url, name
+        id, type, url, name
         from video.video
         <where>
             <if test="id != null and id != ''">
@@ -71,7 +73,10 @@
                 name = #{name},
             </if>
             <if test="tag != null and tag != ''">
-                and tag = #{tag}
+                 tag = #{tag},
+            </if>
+            <if test="status != null and status != ''">
+                 status = #{status}
             </if>
         </set>
         where id = #{id}

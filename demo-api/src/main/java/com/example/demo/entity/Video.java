@@ -21,6 +21,8 @@ public class Video implements Serializable {
 
     private String tag;
 
+    private String status;
+
 
     public String getId() {
         return id;
@@ -60,5 +62,14 @@ public class Video implements Serializable {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

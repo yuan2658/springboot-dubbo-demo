@@ -46,8 +46,8 @@ public class VideoServiceImpl implements VideoService {
      * @return 对象列表
      */
     @Override
-    public List<Video> queryAllByLimit(int offset, int limit) {
-        return this.videoDao.queryAllByLimit(offset, limit);
+    public List<Video> queryAllByLimit(String status,int offset, int limit) {
+        return this.videoDao.queryAllByLimit(status,offset, limit);
     }
 
     /**
@@ -114,5 +114,7 @@ public class VideoServiceImpl implements VideoService {
         video.setTag(tag);
         return insert(video);
     }
+
+
 
 }
