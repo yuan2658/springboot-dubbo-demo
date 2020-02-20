@@ -41,8 +41,8 @@ public class VideoCatoryController {
     }
 
 
-    @GetMapping("update")
-    public String update(){
+    @GetMapping("update1")
+    public String update1(){
         List<Video> videos = videoService.queryAllByLimit("0", 1, 50);
         for(Video video : videos){
             VideoCatory videoCatory = new VideoCatory();
@@ -61,6 +61,73 @@ public class VideoCatoryController {
         }
         return "200";
     }
+
+
+    @GetMapping("update2")
+    public String update2(){
+        List<Video> videos = videoService.queryAllByLimit("0", 1, 50);
+        for(Video video : videos){
+            VideoCatory videoCatory = new VideoCatory();
+            videoCatory.setName(video.getName());
+            videoCatory.setTag(video.getTag());
+            videoCatory.setType(video.getType());
+            String url = video.getUrl();
+            videoCatory.setUrl(url);
+            videoCatory.setSource(getSource(url));
+            videoCatory.setYear(getYears(url));
+            videoCatory.setMonth(getMonth(url));
+            videoCatory.setDay(getDay(url));
+            videoCatoryService.insert(videoCatory);
+            video.setStatus("1");
+            videoService.update(video);
+        }
+        return "200";
+    }
+
+
+    @GetMapping("update3")
+    public String update3(){
+        List<Video> videos = videoService.queryAllByLimit("0", 1, 50);
+        for(Video video : videos){
+            VideoCatory videoCatory = new VideoCatory();
+            videoCatory.setName(video.getName());
+            videoCatory.setTag(video.getTag());
+            videoCatory.setType(video.getType());
+            String url = video.getUrl();
+            videoCatory.setUrl(url);
+            videoCatory.setSource(getSource(url));
+            videoCatory.setYear(getYears(url));
+            videoCatory.setMonth(getMonth(url));
+            videoCatory.setDay(getDay(url));
+            videoCatoryService.insert(videoCatory);
+            video.setStatus("1");
+            videoService.update(video);
+        }
+        return "200";
+    }
+
+    @GetMapping("update4")
+    public String update4(){
+        List<Video> videos = videoService.queryAllByLimit("0", 1, 50);
+        for(Video video : videos){
+            VideoCatory videoCatory = new VideoCatory();
+            videoCatory.setName(video.getName());
+            videoCatory.setTag(video.getTag());
+            videoCatory.setType(video.getType());
+            String url = video.getUrl();
+            videoCatory.setUrl(url);
+            videoCatory.setSource(getSource(url));
+            videoCatory.setYear(getYears(url));
+            videoCatory.setMonth(getMonth(url));
+            videoCatory.setDay(getDay(url));
+            videoCatoryService.insert(videoCatory);
+            video.setStatus("1");
+            videoService.update(video);
+        }
+        return "200";
+    }
+
+
 
 
     public String getYears(String url){
