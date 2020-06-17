@@ -52,4 +52,8 @@ public interface VideoCatoryService {
      */
     boolean deleteById(Integer id);
 
+
+
+    void updates(Integer count);
+
 }

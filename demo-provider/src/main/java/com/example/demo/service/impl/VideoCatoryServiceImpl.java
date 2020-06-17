@@ -1,9 +1,12 @@
 package com.example.demo.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.example.demo.entity.Video;
 import com.example.demo.entity.VideoCatory;
 import com.example.demo.dao.VideoCatoryDao;
 import com.example.demo.service.VideoCatoryService;
+import com.example.demo.service.VideoService;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,6 +21,9 @@ import java.util.List;
 public class VideoCatoryServiceImpl implements VideoCatoryService {
     @Resource
     private VideoCatoryDao videoCatoryDao;
+
+    @Resource
+    private VideoService videoService;
 
     /**
      * 通过ID查询单条数据
@@ -76,4 +82,58 @@ public class VideoCatoryServiceImpl implements VideoCatoryService {
     public boolean deleteById(Integer id) {
         return this.videoCatoryDao.deleteById(id) > 0;
     }
+
+
+    @Override
+    public void updates(Integer account){
+        List<Video> videos = videoService.queryAllByLimit("0", account, 50);
+        for(Video video : videos){
+            VideoCatory videoCatory = new VideoCatory();
+            videoCatory.setName(video.getName());
+            videoCatory.setTag(video.getTag());
+            videoCatory.setType(video.getType());
+            String url = video.getUrl();
+            videoCatory.setUrl(url);
+            videoCatory.setSource(getSource(url));
+            videoCatory.setYear(getYears(url));
+            videoCatory.setMonth(getMonth(url));
+            videoCatory.setDay(getDay(url));
+            insert(videoCatory);
+            video.setStatus("1");
+            videoService.update(video);
+        }
+
+
+
+    }
+
+    public String getYears(String url){
+        int i = url.indexOf("com/");
+
+        String substring = url.substring(i+4,i+8);
+        return substring;
+    }
+    public String getMonth(String url){
+        int i = url.indexOf("com/");
+        String substring = url.substring(i+8,i+10);
+        return substring;
+    }
+    public String getDay(String url){
+        int i = url.indexOf("com/");
+        String substring = url.substring(i+10,i+12);
+        return substring;
+    }
+
+
+    public String getSource(String url){
+        String souce = "";
+        if(url.indexOf("qiezi")>0){
+            souce = "qiezi";
+        }else if (url.indexOf("lajiao")>0){
+            souce = "lajiao";
+        }
+        return souce;
+    }
+
+
 }

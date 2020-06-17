@@ -19,6 +19,7 @@ public class UrlUtils {
     public static final int DEF_CONN_TIMEOUT = 30000;
     public static final int DEF_READ_TIMEOUT = 30000;
     public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
+    public static String QQuserAgent =  "Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI";
 
 
     /**
@@ -36,7 +37,7 @@ public class UrlUtils {
             StringBuffer sb = new StringBuffer();
             URL url = new URL(strUrl);
             conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("User-agent", userAgent);
+            conn.setRequestProperty("User-agent", QQuserAgent);
             conn.setUseCaches(false);
             conn.setConnectTimeout(DEF_CONN_TIMEOUT);
             conn.setReadTimeout(DEF_READ_TIMEOUT);

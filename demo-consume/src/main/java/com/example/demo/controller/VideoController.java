@@ -7,13 +7,9 @@ import com.example.demo.entity.VideoType;
 import com.example.demo.util.UrlUtils;
 import com.example.demo.entity.Video;
 import com.example.demo.service.VideoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import static org.apache.zookeeper.ZooDefs.OpCode.getData;
 
 
 /**
@@ -148,8 +144,8 @@ public class VideoController {
     }
 
     public String getData(String type) throws Exception {
-        String url = "https://getman.cn/api/request?url=http://mu.coroad.cn//bf2.php?lx="+ type;
-        String jsonByUrl = UrlUtils.getJsonByUrl(url,"POST");
+        String url = "http://mu.coroad.cn//bf2.php?lx="+ type;
+        String jsonByUrl = UrlUtils.getJsonByUrl(url,"GET");
         JSONObject jsonObject = JSONObject.parseObject(jsonByUrl);
         return  (String) jsonObject.get("body");
     }
